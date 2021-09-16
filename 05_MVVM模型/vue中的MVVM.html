@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+     <!-- 这些是view -->
+    <div id="root">
+        <h1>学校名称：{{name}}</h1>
+        <h1>学校address：{{address}}</h1>   
+    </div>
+ 
+</body>
+<script>
+ new Vue({                            //这个是viewModel
+    // 下边的这些是Model
+     el:'#root',
+     data:{
+         name:'Google',
+         address:'Tokyo'
+     }
+ })
+    
+</script>
+</html>

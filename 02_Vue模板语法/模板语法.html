@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法 </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h1>插值语法</h1>
+      <h3>Hello,{{name}}</h3>
+      <hr>
+      <h1>指令语法</h1>
+      <!--输入url ，使用单项数据绑定  v-bind:-->
+      <!--v-bind:可以简写为 ：-->
+      <a :href="school.url">Click here to {{school.name}}</a>
+    </div>
+
+<script>
+  new Vue({
+      el:'#root',
+      data:{
+          name:'Tiffany',
+          <!--给vue分层-->
+          school:{
+              url:'http://www.youtube.com',
+              name:'Disney'
+            }
+        }
+  })
+</script>
+</body>
+</html>
