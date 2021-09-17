@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName">
+        <br>
+        名：<input type="text" v-model="lastName">
+        <br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+</body>
+<script>
+    
+ const vm = new Vue({
+     el:'#root',
+     data:{
+         firstName:'liu',
+         lastName:'haha'
+     },
+     computed:{
+         fullName:{
+            get(){    
+                return this.firstName +'-'+ this.lastName
+            },
+            set(value){
+                console.log('有人修改了属性，且值是',value)
+                const arr = value.split('-')
+                this.firstName = arr[0]
+                this.lastName = arr[1]
+            }
+
+         }
+     }
+     
+ })
+    
+</script>
+</html>
