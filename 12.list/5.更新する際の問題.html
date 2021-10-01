@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">   
+       <h2>person of list</h2>
+       <button @click="updateCojj">click me update cojj</button>
+       <ul>
+           <li v-for="(p,index) of persons" :key="p.id">
+             {{p.name}}-{{p.age}}-{{p.sex}}
+           </li>
+       </ul>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el:'#root',
+        data:{
+           persons:[
+               {id:'001', name:'cojj', age:'11',sex:"women"},
+               {id:'002', name:'locc', age:'90',sex:"women"},
+               {id:'003', name:'joll', age:'87',sex:"man"},
+               {id:'004', name:'nolo', age:'87',sex:"man"}
+            ]
+        },     //
+        methods: {
+            updateCojj(){
+               this.persons[0].name = 'kojj' 
+               this.persons[0].age = '99' 
+               this.persons[0].sex = 'man'             
+            }
+        },
+    })
+</script>
+</html>
