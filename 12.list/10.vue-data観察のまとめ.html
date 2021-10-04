@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">   
+       <h1>student information</h1>
+
+       <button @click="student.age++">age plus 1 year</button><br/>
+       <button @click="addGender">add gender , man</button><br/>
+       <button @click="student.gender = 'unknown' ">change addGender</button><br/>
+       <button @click="addFriend">add one friend in front</button><br/>
+       <button @click="updateFirstFriendName">change first friend's name as : wang </button><br/>
+       <button @click="addHobby">add a hobby</button><br/>
+       <button @click="updateHobby">change first hobby as : drive</button><br/>
+
+
+
+       <h3>name: {{student.name}}</h3>
+       <h3>age: {{student.age}}</h3>
+       <h3 v-if="student.gender">gender: {{student.gender}}</h3>
+       <h3>hobby: </h3>
+        <ul>
+            <li v-for="(h,index) in student.hobby" :key="index">
+                {{h}}
+            </li>
+        </ul>
+        <h3>friends :</h3>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}} -- {{f.age}}
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el:'#root',
+        data:{
+           student:{
+               name:'coco',
+               age:19 ,
+               hobby:['football' , 'watching movie' , 'dance' ],
+               friends:[
+                   {name:'liu' , age:'20'},
+                   {name:'han' , age:'23'}
+                ]
+           }
+        },
+        methods: {
+            addGender(){
+                // Vue.set(this.student,'gender','man')
+                this.$set(this.student,'gender','man')
+            },
+            addFriend(){
+                this.student.friends.unshift(
+                    {name:'jin' , age:'20'},
+                    
+                )
+            },
+            updateFirstFriendName(){
+                this.student.friends[0].name = 'wang',
+                this.student.friends[0].age = '18'
+            },
+            addHobby(){
+                this.student.hobby.push('music')
+            },
+            updateHobby(){
+                // this.student.hobby.splice(0,1,'drive')
+                this.$set(this.student.hobby,0,'drive')
+            }
+        }
+    })
+
+
+</script>
+</html>
