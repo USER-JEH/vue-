@@ -7,10 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
-    <div id="root">   
-       <h2>now n : <span v-text="n"></span></h2>
-       <h2>big n : <span v-big="n"></span></h2>
-       <button @click="n++">click add 1</button>
+    <div id="root">    
+       <hr/>
+       <div>{{name}}</div>
+       <div v-text="name"></div>
     </div>
 </body>
 
@@ -18,12 +18,7 @@
     new Vue({
         el:'#root',
         data:{
-           n:1
-        },
-        directives:{
-            big(element,binding){
-                element.innerText = binding.value * 10
-            }
+           name:'haha'
         }
     })
 </script>

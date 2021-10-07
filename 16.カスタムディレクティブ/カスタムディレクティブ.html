@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">   
+       <h2>now n : <span v-text="n"></span></h2>
+       <!-- <h2>big n : <span v-big="n"></span></h2> -->
+       <button @click="n++">click add 1</button>
+       <hr/>
+       <input type="text" v-fbind:value="n">
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el:'#root',
+        data:{
+           n:1
+        },
+        directives:{
+            big(element,binding){
+                element.innerText = binding.value * 10
+            },
+            fbind:{
+                bind(element,binding){
+                    element.value = binding.value
+                },
+                inserted(element,binding){
+                    element.focus()
+                },
+                update(element,binding) {
+                    element.value = binding.value
+                },
+            }
+        }
+    })
+</script>
+</html>
